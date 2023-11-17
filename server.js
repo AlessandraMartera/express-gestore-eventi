@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config();
 
 const port = process.env.PORT || 3000;
 
+const event = new Event ( 5, 'maratona', 'description maratona', '2023-11-12', 200 )
+
 // configuro express per leggere i dati in formato json
 app.use(express.json());
 
@@ -13,7 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 const routerEvents = require('./routers/events.js');
 app.use("/events", routerEvents);
 
-app.listen(port, () => {
+
+
+app.listen(port, event, () => {
     console.log(`Server partito su porta http://localhost:${port}`)
+    
+    console.log(event);
    })
    
+
