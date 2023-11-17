@@ -3,7 +3,13 @@ const app = express();
 const dotenv = require("dotenv").config();
 
 const port = process.env.PORT || 3000;
-// const routeEvents = require('./routes/events.js');
+
+// configuro express per leggere i dati in formato json
+app.use(express.json());
+
+// // configuro express per leggere i dati in formato x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
 const routerEvents = require('./routers/events.js');
 app.use("/events", routerEvents);
 
