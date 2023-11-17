@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Concerto in Piazza",
+        "description": "Un concerto live con artisti locali",
+        "date": "2023-12-01T19:30:00",
+        "maxSeats": 200
+      },
+      {
+        "id": 2,
+        "title": "Mostra d'Arte Moderna",
+        "description": "Esplora opere d'arte contemporanea",
+        "date": "2023-11-15T10:00:00",
+        "maxSeats": 100
+      },
+      {
+        "id": 3,
+        "title": "Corso di Cucina Italiana",
+        "description": "Impara a cucinare piatti tradizionali italiani",
+        "date": "2023-12-10T18:00:00",
+        "maxSeats": 20
+      }
+]
