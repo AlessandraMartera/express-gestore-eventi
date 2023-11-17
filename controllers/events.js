@@ -1,25 +1,25 @@
 const eventsDb = require('../db/events.json')
-const fs = require("fs")
+const fs = require("fs");
+const Event = require('../models/events')
+
 const index = function(req, res) {
     res.json(eventsDb);
 }
 
-const store = function(req, res) {
-    const newEvents = req.body;
-    // eventsDb.push(newEvents);
+function store (req, res) {
+    const newEvent = req.body;
+    eventsDb.push(newEvent);
 
-    // const json = JSON.stringify(eventsDb, null, 2);
-    // fs.writeFileSync(path.resolve(__dirname, "..", "db", "events.json"), json);
+    const json = JSON.stringify(eventsDb, null, 2);
+    fs.writeFileSync(path.resolve(__dirname, "..", "db", "events.json"), json);
     
-    // res.end("evento salvata")
-
-    res.json(newEvents)
+    res.end("ricetta salvata");
 }
 
 const update = function(req, res) {
     
     
-    res.end("update");
+    res.end("ciaooo");
 }
  
  

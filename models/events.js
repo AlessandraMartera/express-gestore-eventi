@@ -3,19 +3,25 @@ const path = require('path');
 const pathData = path.resolve(__dirname + '..' + 'db' + 'events.json')
 
 class Event {
-    id; 
-    title; 
-    description; 
-    date; 
-    maxSeats;
-
     constructor(id, title, description, date, maxSeats) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.maxSeats = maxSeats;
+        if (typeof id === 'object') {
+            // Se il primo argomento è un oggetto, usalo direttamente
+            const { id, title, description, date, maxSeats } = id;
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.date = date;
+            this.maxSeats = maxSeats;
+        } else {
+            // Altrimenti, usa gli argomenti separati
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.date = date;
+            this.maxSeats = maxSeats;
+        }
     }
+
 
     readEvent(){
         const event = fs.readFileSync(pathData, "utf-8");
@@ -24,8 +30,12 @@ class Event {
         return JSON.parse(event);
     }
 
-    saveEvent(){
-        console.log("ciao")
+    saveEvent(newEvent){
+
+        const events = fs.readFileSync(pathData, "utf-8");
+        events.push(newEvent)
+
+        fs.writeFileSync(JSON.stringify(events, null, 2))
     }
 }
 
