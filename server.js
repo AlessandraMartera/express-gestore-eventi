@@ -12,16 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT || 3000;
 
 // Passare l'oggetto come argomento al costruttore
+const event = new myEvent(10, 'zoom meeting', 'corso React Boolean', '2023-12-01', 26);
 
-const objNewEvent = new myEvent({
-    id: 'id123',
-    title: 'Titolo dell\'evento',
-    description: 'Descrizione dell\'evento',
-    date: '2023-01-01',
-    maxSeats: 100
-});
-
-console.log(objNewEvent);
+myEvent.store(34, 'Martatona', 'Descrizione della maratona', '2023-12-31', 40);
+console.log(event);
 
 // configuro express per leggere i dati in formato json
 app.use(express.json());
