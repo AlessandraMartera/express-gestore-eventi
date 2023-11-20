@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require("dotenv").config();
 
+const myEvent = require("./models/events.js");
 // configuro express per leggere i dati in formato json
 app.use(express.json());
 
@@ -10,10 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
-const arrayEvent = [];
 // Passare l'oggetto come argomento al costruttore
 
-const event = new Event({
+const objNewEvent = new myEvent({
     id: 'id123',
     title: 'Titolo dell\'evento',
     description: 'Descrizione dell\'evento',
@@ -21,7 +21,7 @@ const event = new Event({
     maxSeats: 100
 });
 
-
+console.log(objNewEvent);
 
 // configuro express per leggere i dati in formato json
 app.use(express.json());
@@ -34,7 +34,7 @@ app.use("/", routerEvents);
 
 
 
-app.listen(port, event, () => {
+app.listen(port, () => {
     console.log(`Server partito su porta http://localhost:${port}`)
     
   
